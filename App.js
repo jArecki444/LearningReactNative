@@ -6,33 +6,30 @@ import PlaceList from './src/components/PlaceList/PlaceList';
 
 export default class App extends Component {
     state = {
-        places: []
+      places: []
     };
 
-    placeAddedHandler = placeName => {
-        this.setState(prevState => {
-            return {
-                places: prevState.places.concat(placeName)
-            }
-        })
+    placeAddedHandler = (placeName) => {
+      this.setState(prevState => ({
+        places: prevState.places.concat(placeName)
+      }));
     }
 
     render() {
-
-        return (
-            <View style={styles.container}>
-                <PlaceInput onPlaceAdded={this.placeAddedHandler} />
-                <PlaceList places={this.state.places} />
-            </View>
-        );
+      return (
+        <View style={styles.container}>
+          <PlaceInput onPlaceAdded={this.placeAddedHandler} />
+          <PlaceList places={this.state.places} />
+        </View>
+      );
     }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        padding: 26,
-        justifyContent: 'flex-start',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF'
-    }
+  container: {
+    padding: 26,
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF'
+  }
 });
