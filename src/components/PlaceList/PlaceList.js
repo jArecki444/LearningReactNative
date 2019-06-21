@@ -5,7 +5,14 @@ import ListItem from '../ListItem/ListItem';
 
 const placeList = (props) => {
   const placesOutput = props.places.map((place, i) => (
-    <ListItem key={i} placeName={place} onItemPressed={() => alert(`Item pressed - ID: ${i}`)} />
+    <ListItem
+      key={i}
+      placeName={place}
+      onItemPressed={() => {
+        props.onItemDeleted(i);
+        alert(`Item deleted ${place} - ID: ${i}`);
+      }}
+    />
   ));
   return <View style={styles.listContainer}>{placesOutput}</View>;
 };

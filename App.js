@@ -5,24 +5,31 @@ import PlaceInput from './src/components/PlaceInput/PlaceInput';
 import PlaceList from './src/components/PlaceList/PlaceList';
 
 export default class App extends Component {
-    state = {
-      places: []
-    };
+  state = {
+    places: []
+  };
 
-    placeAddedHandler = (placeName) => {
-      this.setState(prevState => ({
-        places: prevState.places.concat(placeName)
-      }));
-    }
+  placeAddedHandler = (placeName) => {
+    this.setState(prevState => ({
+      places: prevState.places.concat(placeName)
+    }));
+  };
 
-    render() {
-      return (
-        <View style={styles.container}>
-          <PlaceInput onPlaceAdded={this.placeAddedHandler} />
-          <PlaceList places={this.state.places} />
-        </View>
-      );
-    }
+  placeDeletedHandler = (index) => {
+    this.setState(prevState => ({
+      places: prevState.places.filter((place, i) => i !== index)
+    }));
+  };
+
+  render() {
+    return (
+      <View style={styles.container}>
+        <PlaceInput onPlaceAdded={this.placeAddedHandler} />
+        <PlaceList places={this.state.places} onItemDeleted={this.placeDeletedHandler} />
+
+      </View>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
