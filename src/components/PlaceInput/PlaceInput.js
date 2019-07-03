@@ -21,6 +21,10 @@ class PlaceInput extends Component {
       return;
     }
 
+    // How it works?
+    // Where is definition of onPlaceAdded prop?
+    // Answer: This prop emits a recieved value (for example to sharedplace)
+    // so it could be listened to in other compoents like SharedPlace
     this.props.onPlaceAdded(this.state.placeName);
   };
 
