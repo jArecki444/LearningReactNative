@@ -15,6 +15,7 @@ const reducer = (state = initialState, action) => {
     case ADD_PLACE:
       return {
         ...state,
+        // concat will simply add new value to existing array
         places: state.places.concat({
           key: Math.random(),
           name: action.placeName,
@@ -27,6 +28,7 @@ const reducer = (state = initialState, action) => {
     case DELETE_PLACE:
       return {
         ...state,
+        // in this case filter will return a array without a selected element
         places: state.places.filter(place => {
           return place.key !== state.selectedPlace.key;
         }),
